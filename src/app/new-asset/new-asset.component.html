@@ -1,0 +1,34 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container">
+  <mat-card class="card mat-elevation-z8">
+    <form [formGroup]="newAssetForm" (ngSubmit)="addNewAsset()" class="asset-form">
+      <mat-card-content fxLayout="column" fxLayoutGap="5%">
+        <mat-form-field class="full-width">
+          <mat-label>Asset Name *</mat-label>
+          <input matInput [formControl]="newAssetForm.controls['assetName']" placeholder="Asset Name">
+          <mat-error *ngIf="newAssetForm.controls['assetName'].hasError('required')">
+            Asset Name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="newAssetForm.controls['assetName'].hasError('pattern')">
+            Asset Name can contain only <strong>alphabets,digits,space and '-'</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Asset Description</mat-label>
+          <textarea matInput [formControl]="newAssetForm.controls['assetDescription']" placeholder="Description"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Asset Category</mat-label>
+          <mat-select [formControl]="newAssetForm.controls['assetCategory']" required>
+            <mat-option value="Laptop">Laptop</mat-option>
+            <mat-option value="Printer">Printer</mat-option>
+            <mat-option value="Router">Router</mat-option>
+          </mat-select>
+          <mat-error *ngIf="newAssetForm.controls['assetCategory'].hasError('required')">
+            Please select an asset category.
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="submit" color="primary" class="submit-button">Add Asset</button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

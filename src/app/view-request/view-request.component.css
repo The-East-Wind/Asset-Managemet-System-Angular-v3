@@ -1,0 +1,19 @@
+.container {
+  min-height: 80%;
+}
+.card {
+  width: 300px;
+}
+.space{
+  flex: 1 1 auto;
+}
+.expansion{
+  text-align: right;
+}
+.accept{
+  background-color: green;
+  color: white;
+}
+.footer{
+  text-align: center;
+}

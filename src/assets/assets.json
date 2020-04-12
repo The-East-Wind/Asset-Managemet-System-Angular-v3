@@ -1,0 +1,10 @@
+[
+  {"id" : 1,"assetName":"HP Pavillion","assetDescription":"4Gb RAM-500Gb HDD-i5 7th gen","availability":"Available","allottedTo":{},"assetCategory":"Laptop"},
+  {"id" : 2,"assetName":"ASUS Vivobook","assetDescription":"8Gb RAM-1Tb HDD-i5 8th gen","availability":"Available","allottedTo":{},"assetCategory":"Laptop"},
+  {"id" : 3,"assetName":"Macbook Pro","assetDescription":"8Gb RAM-512Gb SSD-i7 9th gen","availability":"Not Available","allottedTo":{},"assetCategory":"Laptop"},
+  {"id" : 4,"assetName":"Hp Deskjet","assetDescription":"Laser Color Printer","availability":"Available","allottedTo":{},"assetCategory":"Printer"},
+  {"id" : 5,"assetName":"Cannon MG2570S","assetDescription":"Inkjet Color Printer","availability":"Not Available","allottedTo":{},"assetCategory":"Printer"},
+  {"id" : 6,"assetName":"Epson Ecotank","assetDescription":"Laser Color printer with scanner","availability":"Available","allottedTo":{},"assetCategory":"Printer"},
+  {"id" : 7,"assetName":"D-Link DIR-615","assetDescription":"Wireless Router-150 Mbps","availability":"Available","allottedTo":{},"assetCategory":"Router"},
+  {"id" : 8,"assetName":"Tp-Link Archer C6","assetDescription":"Wireless Dual Band Router-450 Mbps","availability":"Not Available","allottedTo":{},"assetCategory":"Router"}
+]

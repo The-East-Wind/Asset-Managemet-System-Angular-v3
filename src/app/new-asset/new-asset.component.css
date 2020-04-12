@@ -1,0 +1,13 @@
+.card{
+  width: 300px;
+}
+.container{
+  min-height: 80%;
+}
+.full-width{
+  font-size: large;
+}
+.submit-button{
+  padding: 2%;
+  font-size: large;
+}

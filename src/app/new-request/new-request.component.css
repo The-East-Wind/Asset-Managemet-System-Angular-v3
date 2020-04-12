@@ -1,0 +1,12 @@
+mat-label{
+  font-size: medium;
+  color: black;
+}
+.full-width{
+  width:100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+mat-error{
+  font-size: medium;
+}

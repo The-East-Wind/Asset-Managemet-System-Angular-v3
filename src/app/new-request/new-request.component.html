@@ -1,0 +1,33 @@
+<form [formGroup]="assetRequestForm" (ngSubmit)="submitFormData()">
+  <div mat-dialog-content fxLayoutGap="2%">
+    <mat-form-field class="full-width">
+      <mat-label>From Date *</mat-label>
+      <input (dateInput)="setMinToDate()" matInput [min]="minFromDate" [max]="maxFromDate" [matDatepicker]="fromDatePicker" [formControl]="assetRequestForm.controls['fromDate']">
+      <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #fromDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>To Date *</mat-label>
+      <input matInput [min]="minToDate" [max]="maxToDate" [matDatepicker]="toDatePicker" [formControl]="assetRequestForm.controls['toDate']">
+      <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #toDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Requested For *</mat-label>
+      <input matInput [formControl]="assetRequestForm.controls['requestedFor']" placeholder="Employee ID">
+      <mat-error *ngIf="assetRequestForm.controls['requestedFor'].hasError('required') && validEmployee">
+        This field <strong>cannot be empty</strong>
+      </mat-error>
+      <mat-error *ngIf="assetRequestForm.controls['requestedFor'].hasError('pattern') && validEmployee">
+        Employee ID should be a <strong>4 digit</strong> number.
+      </mat-error>
+      <mat-error *ngIf='!validEmployee'>
+        <strong>Employee doesn't exist.Enter Valid ID.</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-action class="full-width" fxLayout="column" fxLayoutGap="5%">
+    <button mat-raised-button color="primary" type="submit">Request Asset</button>
+    <button mat-raised-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>

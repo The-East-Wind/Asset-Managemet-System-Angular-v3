@@ -1,0 +1,69 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container">
+  <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+  <mat-card class="card mat-elevation-z8" *ngIf="isLoaded && !noPendingRequest">
+    <mat-card-content>
+      <mat-list dense>
+        <mat-list-item>
+          <p>Request ID</p>
+          <span class="space"></span>
+          <p>{{currentRequest.requestId}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p>From Date</p>
+          <span class="space"></span>
+          <p>{{currentRequest.fromDate}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <p>To Date</p>
+          <span class="space"></span>
+          <p>{{currentRequest.toDate}}</p>
+        </mat-list-item>
+        <mat-list-item (click)="expandAsset=!expandAsset">
+          <p>Requested Asset *</p>
+          <span class="space"></span>
+          <p *ngIf="!expandAsset">{{currentRequest.requestedAsset.assetId}}</p>
+          <div *ngIf="expandAsset" class="expansion">
+            <p matLine>{{currentRequest.requestedAsset.assetId}}</p>
+            <p matLine>{{currentRequest.requestedAsset.assetName}}</p>
+            <p matLine>{{currentRequest.requestedAsset.assetCategory}}</p>
+            <p matLine>{{currentRequest.requestedAsset.availability}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item (click)="expandBy=!expandBy">
+          <p>Request By *</p>
+          <span class="space"></span>
+          <p *ngIf="!expandBy">{{currentRequest.requestedBy['employeeId']}}</p>
+          <div *ngIf="expandBy" class="expansion">
+            <p matLine>{{currentRequest.requestedBy['employeeId']}}</p>
+            <p matLine>{{currentRequest.requestedBy['employeeName']}}</p>
+            <p matLine>{{currentRequest.requestedBy['employeeDepartment']}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item (click)="expandFor=!expandFor">
+          <p>Request For *</p>
+          <span class="space"></span>
+          <p *ngIf="!expandFor">{{currentRequest.requestedFor['employeeId']}}</p>
+          <div *ngIf="expandFor" class="expansion">
+            <p matLine>{{currentRequest.requestedFor['employeeId']}}</p>
+            <p matLine>{{currentRequest.requestedFor['employeeName']}}</p>
+            <p matLine>{{currentRequest.requestedFor['employeeDepartment']}}</p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center center">
+      <button mat-raised-button class="accept" type="button" (click)="acceptRequest()" [disabled]="disableAll">Allot<mat-icon>done</mat-icon></button>
+      <button mat-raised-button color="warn" type="button" (click)="rejectRequest()" [disabled]="disableAll">Reject<mat-icon>clear</mat-icon></button>
+      <button mat-raised-button color="primary" type="button" (click)="next()" [disabled]="(index+1) === requests.length && disableAll"><mat-icon>arrow_right_alt</mat-icon></button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <p class="footer">* click to see more details</p>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card class="card mat-elevation-z8" *ngIf="noPendingRequest">
+    <mat-card-content>
+      <h1>Hurray! No Pending Requests</h1>
+      <h2>Come again later!</h2>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,24 @@
+@media only screen and (max-width: 736px) and (orientation:portrait) {
+  table,.table-filter{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  mat-header-row, mat-row {
+    width: 200%;
+  }
+}
+
+table,.table-filter{
+  width: 90%;
+  text-align: justify;
+}
+.table-filter{
+  font-size: large;
+  margin-top: 1%;
+}
+
+th.mat-header-cell{
+  text-align: justify;
+}
+

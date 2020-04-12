@@ -1,0 +1,33 @@
+.login-form {
+  min-width: 150px;
+  max-width: 350px;
+  width: 100%;
+}
+
+.login-full-width {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: large;
+}
+
+.submit-button{
+  font-size: large;
+  padding: 2%;
+}
+
+.login-card {
+  max-width: 350px;
+  text-align: center;
+}
+
+.helper{
+  font-size: medium;
+}
+.container{
+   min-height: 90%;
+}
+.error{
+  color: red;
+  background-color: pink;
+}

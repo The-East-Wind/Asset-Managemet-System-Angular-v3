@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="header" fxLayout fxLayout.lt-sm="column">
+  <span>
+    <button mat-button><mat-icon>home</mat-icon></button>
+    <button mat-button>{{title}}</button>
+  </span>
+  <span class="space-between"></span>
+  <span>
+    <a mat-button routerLink="/view-status" routerLinkActive="active">View Request Status</a>
+  </span>
+  <span *ngIf="!isAuthenticated">
+    <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+  </span>
+  <span *ngIf="isAuthenticated">
+    <a mat-button [routerLink]="home">Home<mat-icon>account_box</mat-icon></a>
+  </span>
+  <span *ngIf="isAuthenticated">
+    <a mat-button routerLink="/" routerLinkActive="active">Logout<mat-icon>exit_to_app</mat-icon></a>
+  </span>
+</mat-toolbar>
+<router-outlet (activate)="changeNavBar($event)" (deactivate)="logout()"></router-outlet>

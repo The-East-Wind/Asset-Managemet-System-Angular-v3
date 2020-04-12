@@ -1,0 +1,51 @@
+.view-status-form {
+  min-width: 150px;
+  max-width: 500px;
+}
+
+.full-width{
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  font-size: large;
+}
+.submit-button{
+  font-size: large;
+  padding: 2%;
+}
+
+.view-status-card {
+  max-width: 400px;
+  text-align: center;
+}
+
+.status-button{
+  align-self: center;
+  padding: 2%;
+  margin-bottom: 5%;
+  font-size: medium;
+}
+
+.approved{
+  color: darkgreen;
+  background-color: lightgreen;
+  text-align: center;
+}
+.rejected{
+  color: red;
+  background-color: pink;
+  text-align: center;
+}
+.pending{
+  color: navy;
+  background-color: lightskyblue;
+  text-align: center;
+}
+
+.status-spinner{
+  align-items: center;
+}
+
+.container{
+  min-height: 90%;
+}

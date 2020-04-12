@@ -1,0 +1,45 @@
+<form [formGroup]="modifyAssetForm" (ngSubmit)="modify()">
+  <h1 matDialogTitle>Modify Asset Detials</h1>
+
+  <div mat-dialog-content fxLayoutGap="2%">
+    <mat-form-field class="full-width">
+      <mat-label>Asset Id +</mat-label>
+      <input matInput [formControl]="modifyAssetForm.controls['assetId']" readonly>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Asset Name *</mat-label>
+      <input matInput [formControl]="modifyAssetForm.controls['assetName']" placeholder="Asset Name">
+      <mat-error *ngIf="modifyAssetForm.controls['assetName'].hasError('required')">
+        Asset Name is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="modifyAssetForm.controls['assetName'].hasError('pattern')">
+        Asset Name can contain only <strong>alphabets,digits,space and '-'</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Asset Description</mat-label>
+      <textarea matInput [formControl]="modifyAssetForm.controls['assetDescription']" placeholder="Description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Asset Category</mat-label>
+      <mat-select [formControl]="modifyAssetForm.controls['assetCategory']" required>
+        <mat-option value="Laptop">Laptop</mat-option>
+        <mat-option value="Printer">Printer</mat-option>
+        <mat-option value="Router">Router</mat-option>
+      </mat-select>
+      <mat-error *ngIf="modifyAssetForm.controls['assetCategory'].hasError('required')">
+        Please select an asset category.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Availability +</mat-label>
+      <input matInput [formControl]="modifyAssetForm.controls['availability']" readonly>
+    </mat-form-field>
+    <mat-hint class="full-width">+ cannot be modified</mat-hint>
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign fxLayoutAlign="center" fxLayoutGap="2%">
+    <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Modify</button>
+  </div>
+</form>

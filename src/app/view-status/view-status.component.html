@@ -1,0 +1,32 @@
+<div class="container" fxLayout fxLayoutAlign="center center">
+<mat-card class="view-status-card mat-elevation-z8">
+    <!--<img matCardImage src="Card wide image source">-->
+  <form class="view-status-form" [formGroup]="viewStatusForm" (ngSubmit)="viewStatus($event)">
+      <mat-card-content class="form-body">
+        <mat-form-field class="full-width">
+          <mat-label>Request ID *</mat-label>
+          <input matInput type="text" [formControl]="viewStatusForm.controls['id']" placeholder="Request ID">
+          <mat-error *ngIf="viewStatusForm.controls['id'].hasError('required')">
+            Request ID is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="viewStatusForm.controls['id'].hasError('pattern')">
+            Request ID should be <strong>a number</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions align="start">
+        <button type="submit" mat-raised-button color="primary" class="submit-button full-width">View Request Status</button>
+      </mat-card-actions>
+  </form>
+  <mat-card-footer fxLayout="column" fxLayoutAlign="center center">
+    <mat-spinner *ngIf="displaySpinner" diameter="40"></mat-spinner>
+    <button mat-stroked-button [ngClass]="{
+      'approved':approved===0,
+      'pending':approved===1,
+      'rejected':approved===2
+    }" *ngIf="this.requestStatus!==undefined" class="status-button">
+      {{this.requestStatus}}
+    </button>
+  </mat-card-footer>
+</mat-card>
+</div>
