@@ -54,7 +54,7 @@ export class ViewRequestComponent implements OnInit {
       } else if (data.availability === 'Available') {
         this.currentRequest.status = 'Approved';
         this._requestService.updateRequest(this.currentRequest).pipe(catchError((error: HttpErrorResponse) => {
-          this._snackBar.open('Uh-oh! An error occured. Please Try again later.', '', {
+          this._snackBar.open('Uh-oh! An error occured. Please try again later', '', {
             duration: 5000, panelClass: 'failure'
           });
           this.disableAll = false;
@@ -63,7 +63,7 @@ export class ViewRequestComponent implements OnInit {
           this.currentRequest.requestedAsset.allottedTo = this.currentRequest.requestedFor;
           this.currentRequest.requestedAsset.availability = 'Not Available';
           this._assetService.updateAsset(this.currentRequest.requestedAsset).pipe(catchError((error: HttpErrorResponse) => {
-            this._snackBar.open('Uh-oh! An error occured. Please Try again later.', '', {
+            this._snackBar.open(error.error.message, '', {
               duration: 5000, panelClass: 'failure'
             });
             this.disableAll = false;

@@ -34,7 +34,7 @@ export class NewAssetComponent implements OnInit {
       newAsset.assetDescription = this.newAssetForm.value.assetDescription;
       newAsset.assetCategory = this.newAssetForm.value.assetCategory;
       this._assetService.addNewAsset(newAsset).pipe(catchError((error: HttpErrorResponse) => {
-        this._snackBar.open('Uh-oh! An Error Occurred. Please try again later', '', {
+        this._snackBar.open('Uh-Oh!An error occurred. Adding asset failed.Please try again later', '', {
           duration: 10000, panelClass: 'failure'
         });
         return throwError('Error Adding Asset');

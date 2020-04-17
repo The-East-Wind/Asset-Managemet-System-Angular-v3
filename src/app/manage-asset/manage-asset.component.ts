@@ -48,7 +48,7 @@ export class ManageAssetComponent implements OnInit {
   deleteAsset(): void {
     if (this.selectedAsset.hasValue()) {
       this._assetService.deleteAssetWithId(this.selectedAsset.selected[0]).pipe(catchError((error: HttpErrorResponse) => {
-        this.displaySnackBar('Uh-oh! An error occured. Please try again later', false);
+        this.displaySnackBar(error.error.message, false);
         return throwError('Error deleting asset');
       })).subscribe((data: any) => {
         console.log(data);
@@ -70,7 +70,7 @@ export class ManageAssetComponent implements OnInit {
           if (modifiedData !== undefined) {
             console.log(modifiedData);
             this._assetService.updateAsset(modifiedData).pipe(catchError((error: HttpErrorResponse) => {
-              this.displaySnackBar('Uh-oh! An error occured. Please try again later', false);
+              this.displaySnackBar(error.error.message, false);
               console.log(error.status, error.error);
               return throwError('Error updating asset');
             })).subscribe((data: any) => {
@@ -92,7 +92,7 @@ export class ManageAssetComponent implements OnInit {
         assetSelected.allottedTo = null;
         assetSelected.availability = 'Available';
         this._assetService.updateAsset(assetSelected).pipe(catchError((error: HttpErrorResponse) => {
-          this.displaySnackBar('Uh-oh! An error occurred. Please try again later.', false);
+          this.displaySnackBar(error.error.message, false);
           console.log(error.status, error.error);
           return throwError('Error Updating Asset');
         })).subscribe((data: any) => {
