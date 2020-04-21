@@ -2,7 +2,7 @@
   min-height: 80%;
 }
 .card {
-  width: 300px;
+  width: 350px;
 }
 .space{
   flex: 1 1 auto;
@@ -17,3 +17,4 @@
 .footer{
   text-align: center;
 }
+

@@ -2,14 +2,14 @@
   <mat-form-field class="filter">
     <input matInput (keyup)="applySearchFilter($event)" placeholder="Search Assets">
   </mat-form-field>
-  <table mat-table [dataSource]="assetDataSource">
+  <table mat-table [dataSource]="assetDataSource" matSort>
     <ng-container matColumnDef="assetId">
       <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let element"> {{element.assetId}} </td>
     </ng-container>
 
     <ng-container matColumnDef="assetCategory">
-      <th mat-header-cell *matHeaderCellDef> Category </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
       <td mat-cell *matCellDef="let element"> {{element.assetCategory}} </td>
     </ng-container>
 
@@ -19,7 +19,7 @@
     </ng-container>
 
     <ng-container matColumnDef="availability">
-      <th mat-header-cell *matHeaderCellDef> Availability </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Availability </th>
       <td mat-cell *matCellDef="let element"> {{element.availability}} </td>
     </ng-container>
 

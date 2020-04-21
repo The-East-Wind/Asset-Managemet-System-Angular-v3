@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ManagerComponent } from './manager/manager.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -83,7 +84,8 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
     MatSnackBarModule,
     MatTabsModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSortModule
   ],
   entryComponents: [ NewRequestComponent ],
   providers: [ AssetService, RequestService, AuthService, EmployeeService ],

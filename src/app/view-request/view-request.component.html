@@ -1,27 +1,30 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="container">
   <mat-spinner *ngIf="!isLoaded"></mat-spinner>
   <mat-card class="card mat-elevation-z8" *ngIf="isLoaded && !noPendingRequest">
-    <mat-card-content>
+    <mat-card-content class="content">
       <mat-list dense>
         <mat-list-item>
           <p>Request ID</p>
           <span class="space"></span>
           <p>{{currentRequest.requestId}}</p>
         </mat-list-item>
+        <mat-divider></mat-divider>
         <mat-list-item>
           <p>From Date</p>
           <span class="space"></span>
           <p>{{currentRequest.fromDate}}</p>
         </mat-list-item>
+        <mat-divider></mat-divider>
         <mat-list-item>
           <p>To Date</p>
           <span class="space"></span>
           <p>{{currentRequest.toDate}}</p>
         </mat-list-item>
+        <mat-divider></mat-divider>
         <mat-list-item (click)="expandAsset=!expandAsset">
           <p>Requested Asset *</p>
           <span class="space"></span>
-          <p *ngIf="!expandAsset">{{currentRequest.requestedAsset.assetId}}</p>
+          <p *ngIf="!expandAsset">{{currentRequest.requestedAsset.assetName}}</p>
           <div *ngIf="expandAsset" class="expansion">
             <p matLine>{{currentRequest.requestedAsset.assetId}}</p>
             <p matLine>{{currentRequest.requestedAsset.assetName}}</p>
@@ -29,26 +32,31 @@
             <p matLine>{{currentRequest.requestedAsset.availability}}</p>
           </div>
         </mat-list-item>
+        <mat-divider></mat-divider>
         <mat-list-item (click)="expandBy=!expandBy">
-          <p>Request By *</p>
+          <p>Requested By *</p>
           <span class="space"></span>
-          <p *ngIf="!expandBy">{{currentRequest.requestedBy['employeeId']}}</p>
+          <p *ngIf="!expandBy">{{currentRequest.requestedBy.employeeId}}</p>
           <div *ngIf="expandBy" class="expansion">
-            <p matLine>{{currentRequest.requestedBy['employeeId']}}</p>
-            <p matLine>{{currentRequest.requestedBy['employeeName']}}</p>
-            <p matLine>{{currentRequest.requestedBy['employeeDepartment']}}</p>
+            <p matLine>{{currentRequest.requestedBy.employeeId}}</p>
+            <p matLine>{{currentRequest.requestedBy.employeeName}}</p>
+            <p matLine>{{currentRequest.requestedBy.employeeDepartment}}</p>
+            <p matLine>{{currentRequest.requestedBy.employeeDesignation}}</p>
           </div>
         </mat-list-item>
+        <mat-divider></mat-divider>
         <mat-list-item (click)="expandFor=!expandFor">
-          <p>Request For *</p>
+          <p>Requested For *</p>
           <span class="space"></span>
-          <p *ngIf="!expandFor">{{currentRequest.requestedFor['employeeId']}}</p>
+          <p *ngIf="!expandFor">{{currentRequest.requestedFor.employeeId}}</p>
           <div *ngIf="expandFor" class="expansion">
-            <p matLine>{{currentRequest.requestedFor['employeeId']}}</p>
-            <p matLine>{{currentRequest.requestedFor['employeeName']}}</p>
-            <p matLine>{{currentRequest.requestedFor['employeeDepartment']}}</p>
+            <p matLine>{{currentRequest.requestedFor.employeeId}}</p>
+            <p matLine>{{currentRequest.requestedFor.employeeName}}</p>
+            <p matLine>{{currentRequest.requestedFor.employeeDepartment}}</p>
+            <p matLine>{{currentRequest.requestedFor.employeeDesignation}}</p>
           </div>
         </mat-list-item>
+        <mat-divider></mat-divider>
       </mat-list>
     </mat-card-content>
     <mat-card-actions fxLayoutAlign="center center">

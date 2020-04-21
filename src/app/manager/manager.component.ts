@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Asset } from './../entities/Asset';
 import { AssetService } from './../asset.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRequestComponent } from '../new-request/new-request.component';
@@ -40,7 +40,7 @@ export class ManagerComponent implements OnInit {
       this.columnHeaders = Object.keys(this.assets[0]).filter(key => key !== 'allottedTo');
       this.columnHeaders.unshift('select');
       this.assetDataSource.filterPredicate = (filterData, filter: string) => {
-        return filterData.assetId === Number(filter);
+        return String(filterData.assetId).indexOf(filter) !== -1;
       };
     });
   }

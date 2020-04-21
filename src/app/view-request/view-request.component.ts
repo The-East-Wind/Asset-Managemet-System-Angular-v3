@@ -27,7 +27,6 @@ export class ViewRequestComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   constructor(private _requestService: RequestService, private _assetService: AssetService, private _snackBar: MatSnackBar) {
   }
-
   getPendingRequests(): void {
     this._requestService.fetchRequests().subscribe((data: any) => {
       this.requests = data.filter((request: Request) => request.status === 'Pending');
