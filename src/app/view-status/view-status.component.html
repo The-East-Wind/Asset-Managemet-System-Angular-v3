@@ -23,7 +23,8 @@
     <button mat-stroked-button [ngClass]="{
       'approved':approved===0,
       'pending':approved===1,
-      'rejected':approved===2
+      'rejected':approved===2,
+      'deleted':approved===3
     }" *ngIf="this.requestStatus!==undefined" class="status-button">
       {{this.requestStatus}}
     </button>

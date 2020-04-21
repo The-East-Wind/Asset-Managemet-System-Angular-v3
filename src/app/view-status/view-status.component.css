@@ -41,6 +41,12 @@
   background-color: lightskyblue;
   text-align: center;
 }
+.deleted{
+  color: red;
+  background-color: palevioletred;
+  text-align: center;
+  font-size: small;
+}
 
 .status-spinner{
   align-items: center;

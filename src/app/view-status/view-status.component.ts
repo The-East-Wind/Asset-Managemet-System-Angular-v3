@@ -38,11 +38,14 @@ export class ViewStatusComponent implements OnInit {
             case 'Approved': this.approved = 0; break;
             case 'Pending': this.approved = 1; break;
             case 'Rejected': this.approved = 2; break;
+            case 'Asset Deleted': this.approved = 3;break;
         }
-        if (this.approved !== 1) {
-            this.requestStatus = `Your request is ${requestWithId.status}`;
+        if (this.approved === 1) {
+          this.requestStatus = `Your request is In Process`;
+        } else if (this.approved === 3) {
+          this.requestStatus = `The asset you had request is no longer available in the catalog`;
         } else {
-            this.requestStatus = `Your request is In Process`;
+          this.requestStatus = `Your request is ${requestWithId.status}`;
         }
         this.displaySpinner = false;
       });
