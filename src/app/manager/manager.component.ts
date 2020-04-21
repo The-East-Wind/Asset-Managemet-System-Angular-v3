@@ -40,7 +40,7 @@ export class ManagerComponent implements OnInit {
       this.columnHeaders = Object.keys(this.assets[0]).filter(key => key !== 'allottedTo');
       this.columnHeaders.unshift('select');
       this.assetDataSource.filterPredicate = (filterData, filter: string) => {
-        return filterData.id === Number(filter);
+        return filterData.assetId === Number(filter);
       };
     });
   }
