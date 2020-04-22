@@ -64,6 +64,7 @@ export class ManagerComponent implements OnInit {
       dialogRef.afterClosed().subscribe(formData => {
         this.selectedAsset.clear();
         if (formData !== undefined) {
+          console.log(formData);
           newRequest.fromDate = this.dateFormatter(formData.fromDate);
           newRequest.toDate = this.dateFormatter(formData.toDate);
           newRequest.requestedFor = formData.requestedFor;

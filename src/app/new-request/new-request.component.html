@@ -27,7 +27,7 @@
     </mat-form-field>
   </div>
   <div mat-dialog-action class="full-width" fxLayout="column" fxLayoutGap="5%">
-    <button mat-raised-button color="primary" type="submit">Request Asset</button>
     <button mat-raised-button color="warn" (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" mat-dialog-close cdkFocusIntial [disabled]="!assetRequestForm.valid">Request Asset</button>
   </div>
 </form>

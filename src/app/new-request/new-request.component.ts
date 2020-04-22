@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { EmployeeService } from './../employee.service';
-import { Request } from './../entities/Request';
+// import { Request } from './../entities/Request';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -40,7 +40,7 @@ export class NewRequestComponent implements OnInit {
     this.maxToDate = new Date(fromDate.getFullYear(), fromDate.getMonth() + 3, fromDate.getDate());
   }
   submitFormData(): void {
-    this.validEmployee = true;
+    // this.validEmployee = true;
     if (this.assetRequestForm.valid) {
       this._employeeService.fetchEmployeeWithId(Number(this.assetRequestForm.value.requestedFor))
       .pipe(catchError((error: HttpErrorResponse) => {
@@ -59,6 +59,7 @@ export class NewRequestComponent implements OnInit {
     }
   }
   closeDialog(): void {
+    this.assetRequestForm.reset();
     this.dialogRef.close();
   }
 }
