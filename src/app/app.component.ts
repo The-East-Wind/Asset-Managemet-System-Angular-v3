@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   title = 'Asset Management System';
   isAuthenticated: boolean;
   showViewStatus: boolean;
+  showReport: boolean;
   userName: string;
   home: string[];
   changeNavBar(event: Event): void {
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
                         }break;
       case '/admin' : {
         this.showViewStatus = false;
+        this.showReport = true;
         this.isAuthenticated = true;
         this.home = [this.router.routerState.snapshot.url];
                       }break;
@@ -45,10 +47,8 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
-    if (this.router.routerState.snapshot.url === '/') {
-      this.isAuthenticated = false;
-      this.auth.logout();
-    }
+    this.isAuthenticated = false;
+    this.auth.logout();
   }
   ngOnInit() {
   }

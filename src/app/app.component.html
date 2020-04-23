@@ -4,6 +4,9 @@
     <button mat-button>{{title}}</button>
   </span>
   <span class="space-between"></span>
+  <span *ngIf="showReport && isAuthenticated">
+    <a mat-button href="http://localhost:8080/assets/report" download>Download Report</a>
+  </span>
   <span *ngIf="!isAuthenticated || showViewStatus">
     <a mat-button routerLink="/view-status" routerLinkActive="active">View Request Status</a>
   </span>
