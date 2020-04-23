@@ -1,18 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { RequestService } from './../request.service';
-import { EmployeeService } from './../employee.service';
 import { Request } from './../entities/Request';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Asset } from './../entities/Asset';
 import { AssetService } from './../asset.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRequestComponent } from '../new-request/new-request.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { throwError } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-manager',
@@ -30,7 +30,7 @@ export class ManagerComponent implements OnInit {
     // tslint:disable-next-line: variable-name
     private _assetService: AssetService, private _router: Router, private _dialog: MatDialog,
     // tslint:disable-next-line: variable-name
-    private _employeeService: EmployeeService, private _requestService: RequestService, private _snackBar: MatSnackBar) {
+    private _authService: AuthService, private _requestService: RequestService, private _snackBar: MatSnackBar) {
     this.fetchAssets();
   }
   fetchAssets = () => {
@@ -55,7 +55,7 @@ export class ManagerComponent implements OnInit {
       this.noneSelected = false;
       const newRequest = new Request();
       newRequest.requestedAsset = this.selectedAsset.selected[0];
-      newRequest.requestedBy = this._employeeService.user;
+      newRequest.requestedBy = this._authService.currentUser;
       // newRequest.id = 10;
       newRequest.status = 'Pending';
       const dialogRef = this._dialog.open(NewRequestComponent, {

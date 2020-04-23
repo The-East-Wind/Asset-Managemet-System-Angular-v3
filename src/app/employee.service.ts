@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeService {
-  user: Employee;
+  // user: Employee;
   private serverUrl = 'http://localhost:8080/employees';
   // tslint:disable-next-line: variable-name
   constructor(private _http: HttpClient) { }

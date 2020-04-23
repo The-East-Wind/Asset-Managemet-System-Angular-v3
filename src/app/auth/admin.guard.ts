@@ -19,9 +19,16 @@ export class AdminGuard implements CanActivate {
   }
 
   checkLogin(url: string) {
-    if (this._auth.isAdmin) {
+    if ( this._auth.currentUser === undefined ) {
+      this._router.navigate(['/login']);
+      return false;
+    }
+    if (this._auth.currentUser.employeeDesignation === 'Admin') {
       return true;
     }
+    /* if (this._auth.isAdmin) {
+      return true;
+    } */
     this._router.navigate(['/access-denied']);
     return false;
   }

@@ -13,17 +13,19 @@ export class AppComponent implements OnInit {
   }
   title = 'Asset Management System';
   isAuthenticated: boolean;
-  isManager: boolean;
-  userDesignation: string;
+  showViewStatus: boolean;
+  userName: string;
   home: string[];
   changeNavBar(event: Event): void {
     switch (this.router.routerState.snapshot.url) {
       case '/login' : this.isAuthenticated = false ; break;
       case '/employee' : {
+        this.showViewStatus = true;
         this.isAuthenticated = true;
         this.home = [this.router.routerState.snapshot.url];
                         }break;
       case '/manager' : {
+        this.showViewStatus = true;
         this.isAuthenticated = true;
         this.home = [this.router.routerState.snapshot.url];
                         }break;
@@ -32,13 +34,14 @@ export class AppComponent implements OnInit {
         this.home = [this.router.routerState.snapshot.url];
                       }break;
     }
+    if (this.home.length !== 0) {
+      this.userName = this.auth.currentUser.employeeName;
+    }
   }
 
   logout(): void {
     if (this.router.routerState.snapshot.url === '/login') {
-      this.auth.isAdmin = false;
-      this.auth.isEmployee = false;
-      this.auth.isManager = false;
+      this.auth.logout();
     }
   }
   ngOnInit() {

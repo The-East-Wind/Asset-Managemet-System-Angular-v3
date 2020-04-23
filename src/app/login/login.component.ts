@@ -5,7 +5,7 @@ import { Employee } from './../entities/Employee';
 import { Router } from '@angular/router';
 import { Credential } from './../entities/credential';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { throwError } from 'rxjs';
 
@@ -17,7 +17,6 @@ import { throwError } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   user: Employee;
-  isAuthenticated: boolean;
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z][a-zA-Z.]{3,24}$/)]),
@@ -26,7 +25,6 @@ export class LoginComponent implements OnInit {
 
   forgot = false;
   authenticationError: boolean;
-  // @Output() authenticationEvent = new EventEmitter<Credential>();
   forgotCredentials = () => {
     this.forgot = !this.forgot;
   }
@@ -44,31 +42,14 @@ export class LoginComponent implements OnInit {
         return throwError('Authentication failed');
       }))
       .subscribe((data: any) => {
-        this._employeeService.user = data;
-        switch (this._employeeService.user.employeeDesignation) {
-          case 'Employee': this._authService.isEmployee = true; break;
-          case 'Manager': this._authService.isManager = true; break;
-          case 'Admin': this._authService.isAdmin = true; break;
-        }
-        this.isAuthenticated = true;
-        const path = '/' + this._employeeService.user.employeeDesignation.toLowerCase();
-        this._router.navigate([path]);
+        this._authService.login(data);
       });
     }
   }
-
-  logout = () => {
-    switch (this._employeeService.user.employeeDesignation) {
-      case 'Employee': this._authService.isEmployee = false; break;
-      case 'Manager': this._authService.isManager = false; break;
-      case 'Admin': this._authService.isAdmin = false; break;
-    }
-    this.isAuthenticated = false;
-    this._employeeService.user = undefined;
-  }
   // tslint:disable-next-line: variable-name
-  constructor(private _authService: AuthService, private _router: Router, private _employeeService: EmployeeService) { }
+  constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
+    this._authService.isLoggedIn();
   }
 }
