@@ -18,11 +18,7 @@ export class ManagerGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if ( this.auth.currentUser === undefined ) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-    if ( this.auth.currentUser.employeeDesignation === 'Manager') {
+    if (this.auth.currentUser !== undefined && this.auth.currentUser.employeeDesignation === 'Manager') {
       return true;
     }
     this.router.navigate(['/access-denied']);

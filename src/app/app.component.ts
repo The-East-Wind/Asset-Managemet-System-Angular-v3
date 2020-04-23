@@ -1,4 +1,3 @@
-import { EmployeeService } from './employee.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
@@ -10,6 +9,11 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {
+    if (auth.isLoggedIn()) {
+      router.navigate(['/' + auth.currentUser.employeeDesignation.toLowerCase()]);
+    } else {
+      router.navigate(['/login']);
+    }
   }
   title = 'Asset Management System';
   isAuthenticated: boolean;
@@ -30,17 +34,19 @@ export class AppComponent implements OnInit {
         this.home = [this.router.routerState.snapshot.url];
                         }break;
       case '/admin' : {
+        this.showViewStatus = false;
         this.isAuthenticated = true;
         this.home = [this.router.routerState.snapshot.url];
                       }break;
     }
-    if (this.home.length !== 0) {
+    if (this.home !== undefined && this.auth.currentUser !== undefined) {
       this.userName = this.auth.currentUser.employeeName;
     }
   }
 
   logout(): void {
-    if (this.router.routerState.snapshot.url === '/login') {
+    if (this.router.routerState.snapshot.url === '/') {
+      this.isAuthenticated = false;
       this.auth.logout();
     }
   }

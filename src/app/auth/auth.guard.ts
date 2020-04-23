@@ -17,11 +17,7 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if ( this.auth.currentUser === undefined ) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-    if (this.auth.currentUser.employeeDesignation === 'Employee') {
+    if (this.auth.currentUser !== undefined && this.auth.currentUser.employeeDesignation === 'Employee') {
       return true;
     }
     this.router.navigate(['/access-denied']);

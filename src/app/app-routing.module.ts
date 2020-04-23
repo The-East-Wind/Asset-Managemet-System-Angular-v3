@@ -25,7 +25,6 @@ const routes: Routes = [
 {path: 'access-denied', component: AccessDeniedComponent},
 {path: 'login', component: LoginComponent},
 {path: 'view-status', component: ViewStatusComponent},
-{path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

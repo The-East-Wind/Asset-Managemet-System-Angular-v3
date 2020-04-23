@@ -13,7 +13,4 @@ export class AccessDeniedComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  goBack(): void  {
-    this.location.back();
-  }
 }

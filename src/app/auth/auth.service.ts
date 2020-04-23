@@ -1,8 +1,7 @@
-import { Router, ɵangular_packages_router_router_a } from '@angular/router';
+import { Router } from '@angular/router';
 import { Employee } from './../entities/Employee';
-import { retry, catchError } from 'rxjs/operators';
 import { Credential } from '../entities/credential';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -13,29 +12,41 @@ export class AuthService {
 
   serverUrl = 'http://localhost:8080/login';
   currentUser: Employee;
+  sessionStorage: Storage;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
   // tslint:disable-next-line: variable-name
-  constructor(private _http: HttpClient,private _router: Router) {
+  constructor(private _http: HttpClient, private _router: Router) {
+    this.sessionStorage = window.sessionStorage;
   }
 
   authenticateUser(enteredCredentials: Credential): Observable<Credential> {
     return this._http.post<Credential>(this.serverUrl, enteredCredentials, this.httpOptions);
   }
   logout() {
-    this.currentUser = undefined;
     // clear user data from local storage
+    this.sessionStorage.removeItem('loggedInUser');
+    this.currentUser = undefined;
+    this._router.navigate(['/login']);
   }
   login(authenticatedUser: Employee) {
-    this.currentUser = authenticatedUser;
     // store data to local storage
+    const authenticatedUserString = JSON.stringify(authenticatedUser);
+    this.sessionStorage.setItem('loggedInUser', authenticatedUserString);
+    this.currentUser = authenticatedUser;
     const path = '/' + this.currentUser.employeeDesignation.toLowerCase();
     this._router.navigate([path]);
   }
-  isLoggedIn() {
-    // check if data is available in localStorage and if stored navigate to respective userpage
+  isLoggedIn(): boolean {
+    // check if data is available in localStorage
+    const loggedInUserString = this.sessionStorage.getItem('loggedInUser');
+    if (loggedInUserString !== null) {
+      this.currentUser = JSON.parse(loggedInUserString);
+      return true;
+    }
+    return false;
   }
 }
