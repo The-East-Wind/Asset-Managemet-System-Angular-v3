@@ -21,9 +21,6 @@
 
 .status-button{
   align-self: center;
-  padding: 2%;
-  margin-bottom: 5%;
-  font-size: medium;
 }
 
 .approved{
@@ -31,7 +28,7 @@
   background-color: lightgreen;
   text-align: center;
 }
-.rejected{
+.rejected,.deleted{
   color: red;
   background-color: pink;
   text-align: center;
@@ -40,12 +37,6 @@
   color: navy;
   background-color: lightskyblue;
   text-align: center;
-}
-.deleted{
-  color: red;
-  background-color: palevioletred;
-  text-align: center;
-  font-size: small;
 }
 
 .status-spinner{

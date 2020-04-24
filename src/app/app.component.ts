@@ -1,3 +1,5 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { AssetService } from './asset.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
@@ -8,7 +10,7 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService, private asset: AssetService) {
     if (auth.isLoggedIn()) {
       router.navigate(['/' + auth.currentUser.employeeDesignation.toLowerCase()]);
     } else {
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
   showReport: boolean;
   userName: string;
   home: string[];
+  downloadURL: string;
   changeNavBar(event: Event): void {
     switch (this.router.routerState.snapshot.url) {
       case '/login' : this.isAuthenticated = false ; break;
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit {
       case '/admin' : {
         this.showViewStatus = false;
         this.showReport = true;
+        this.downloadURL = 'http://localhost:8080/assets/report';
         this.isAuthenticated = true;
         this.home = [this.router.routerState.snapshot.url];
                       }break;
@@ -50,6 +54,7 @@ export class AppComponent implements OnInit {
     this.isAuthenticated = false;
     this.auth.logout();
   }
+
   ngOnInit() {
   }
 }

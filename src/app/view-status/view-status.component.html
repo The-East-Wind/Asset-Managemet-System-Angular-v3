@@ -1,4 +1,4 @@
-<div class="container" fxLayout fxLayoutAlign="center center">
+<div class="container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2%">
 <mat-card class="view-status-card mat-elevation-z8">
     <!--<img matCardImage src="Card wide image source">-->
   <form class="view-status-form" [formGroup]="viewStatusForm" (ngSubmit)="viewStatus($event)">
@@ -20,14 +20,14 @@
   </form>
   <mat-card-footer fxLayout="column" fxLayoutAlign="center center">
     <mat-spinner *ngIf="displaySpinner" diameter="40"></mat-spinner>
-    <button mat-stroked-button [ngClass]="{
-      'approved':approved===0,
-      'pending':approved===1,
-      'rejected':approved===2,
-      'deleted':approved===3
-    }" *ngIf="this.requestStatus!==undefined" class="status-button">
-      {{this.requestStatus}}
-    </button>
   </mat-card-footer>
 </mat-card>
+<button mat-stroked-button [ngClass]="{
+  'approved':approved===0,
+  'pending':approved===1,
+  'rejected':approved===2,
+  'deleted':approved===3
+}" *ngIf="this.requestStatus!==undefined" class="status-button">
+  {{this.requestStatus}}
+</button>
 </div>

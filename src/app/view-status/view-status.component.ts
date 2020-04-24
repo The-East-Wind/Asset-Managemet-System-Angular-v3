@@ -21,7 +21,6 @@ export class ViewStatusComponent implements OnInit {
   viewStatus = (event: Event) => {
     event.preventDefault();
     if (this.viewStatusForm.valid) {
-      // TODO send request to serve instead of getting it from array when backend is ready
       this.requestStatus = undefined;
       this.displaySpinner = true;
       const enteredid = Number(this.viewStatusForm.value.id);
