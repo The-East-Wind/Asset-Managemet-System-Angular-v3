@@ -62,7 +62,7 @@
     <mat-card-actions fxLayoutAlign="center center">
       <button mat-raised-button class="accept" type="button" (click)="acceptRequest()" [disabled]="disableAll">Allot<mat-icon>done</mat-icon></button>
       <button mat-raised-button color="warn" type="button" (click)="rejectRequest()" [disabled]="disableAll">Reject<mat-icon>clear</mat-icon></button>
-      <button mat-raised-button color="primary" type="button" (click)="next()" [disabled]="(index+1) === requests.length && disableAll"><mat-icon>arrow_right_alt</mat-icon></button>
+      <button mat-raised-button color="primary" type="button" (click)="next()" [disabled]="(index+1) === requests.length || disableAll"><mat-icon>arrow_right_alt</mat-icon></button>
     </mat-card-actions>
     <mat-card-footer>
       <p class="footer">* click to see more details</p>

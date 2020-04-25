@@ -36,7 +36,7 @@ export class ManageAssetComponent implements OnInit {
       this.columnHeaders = Object.keys(this.assets[0]).filter(key => key !== 'allottedTo');
       this.columnHeaders.unshift('select');
       this.assetDataSource.filterPredicate = (filterData, filter: string) => {
-        return filterData.id === Number(filter);
+        return String(filterData.assetId).indexOf(filter) !== -1;
       };
     });
   }
