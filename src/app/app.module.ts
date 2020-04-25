@@ -27,6 +27,7 @@ import { ManagerComponent } from './manager/manager.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from './auth/auth.service';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { NewRequestComponent } from './new-request/new-request.component';
@@ -85,7 +86,8 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
     MatTabsModule,
     MatListModule,
     MatExpansionModule,
-    MatSortModule
+    MatSortModule,
+    MatMenuModule
   ],
   entryComponents: [ NewRequestComponent ],
   providers: [ AssetService, RequestService, AuthService, EmployeeService ],

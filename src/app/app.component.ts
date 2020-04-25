@@ -23,24 +23,32 @@ export class AppComponent implements OnInit {
   showReport: boolean;
   userName: string;
   home: string[];
-  downloadURL: string;
+  assetReportURL: string;
+  requestReportURL: string;
   changeNavBar(event: Event): void {
     switch (this.router.routerState.snapshot.url) {
       case '/login' : this.isAuthenticated = false ; break;
       case '/employee' : {
         this.showViewStatus = true;
         this.isAuthenticated = true;
+        this.showReport = false;
+        this.assetReportURL = undefined;
+        this.requestReportURL = undefined;
         this.home = [this.router.routerState.snapshot.url];
                         }break;
       case '/manager' : {
         this.showViewStatus = true;
         this.isAuthenticated = true;
+        this.showReport = false;
+        this.assetReportURL = undefined;
+        this.requestReportURL = undefined;
         this.home = [this.router.routerState.snapshot.url];
                         }break;
       case '/admin' : {
         this.showViewStatus = false;
         this.showReport = true;
-        this.downloadURL = 'http://localhost:8080/assets/report';
+        this.assetReportURL = 'http://localhost:8080/assets/report';
+        this.requestReportURL = 'http://localhost:8080/requests/report';
         this.isAuthenticated = true;
         this.home = [this.router.routerState.snapshot.url];
                       }break;

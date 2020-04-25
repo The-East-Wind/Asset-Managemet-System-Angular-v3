@@ -5,7 +5,11 @@
   </span>
   <span class="space-between"></span>
   <span *ngIf="showReport && isAuthenticated">
-    <a mat-button [href]="downloadURL" download>Download Report</a>
+    <button mat-button [matMenuTriggerFor]="menu">Get Reports</button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item [href]="assetReportURL" download>Asset Report</a>
+      <a mat-menu-item [href]="requestReportURL" download>Requests Report</a>
+    </mat-menu>
   </span>
   <span *ngIf="!isAuthenticated || showViewStatus">
     <a mat-button routerLink="/view-status" routerLinkActive="active">View Request Status</a>
