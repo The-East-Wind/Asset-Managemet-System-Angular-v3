@@ -2,8 +2,8 @@ import { Employee } from './Employee';
 import { Asset } from './Asset';
 export class Request {
   requestId: number;
-  fromDate: string;
-  toDate: string;
+  requestedFrom: string;
+  requestedTill: string;
   status: string;
   requestedBy: Employee;
   requestedFor: Employee;

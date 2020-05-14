@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { throwError } from 'rxjs';
+import { ERROR_COMPONENT_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -39,15 +40,27 @@ export class LoginComponent implements OnInit {
       this._authService.authenticateUser(enteredCredentials)
       .pipe(catchError((error: HttpErrorResponse) => {
         this.authenticationError = true;
+        console.log(error.message);
         return throwError('Authentication failed');
       }))
-      .subscribe((data: any) => {
-        this._authService.login(data);
+      .subscribe(resp => {
+        const token = resp.headers.get('Authorization');
+        // tslint:disable-next-line: no-string-literal
+        const userId = resp.body['userId'];
+        this._employeeService.fetchEmployeeWithId(userId)
+        .pipe(catchError((error: HttpErrorResponse) => {
+          this.authenticationError = true;
+          console.log(error.message);
+          return throwError('Authentication failed');
+        }))
+        .subscribe(data => {
+          this._authService.login(data, token);
+        });
       });
     }
   }
   // tslint:disable-next-line: variable-name
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService, private _employeeService: EmployeeService) { }
 
   ngOnInit(): void {
   }

@@ -2,13 +2,13 @@
   <div mat-dialog-content fxLayoutGap="2%">
     <mat-form-field class="full-width">
       <mat-label>From Date *</mat-label>
-      <input (dateInput)="setMinToDate()" matInput [min]="minFromDate" [max]="maxFromDate" [matDatepicker]="fromDatePicker" [formControl]="assetRequestForm.controls['fromDate']">
+      <input (dateInput)="setMinToDate()" matInput [min]="minFromDate" [max]="maxFromDate" [matDatepicker]="fromDatePicker" [formControl]="assetRequestForm.controls['requestedFrom']">
       <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #fromDatePicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-label>To Date *</mat-label>
-      <input matInput [min]="minToDate" [max]="maxToDate" [matDatepicker]="toDatePicker" [formControl]="assetRequestForm.controls['toDate']">
+      <input matInput [min]="minToDate" [max]="maxToDate" [matDatepicker]="toDatePicker" [formControl]="assetRequestForm.controls['requestedTill']">
       <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #toDatePicker></mat-datepicker>
     </mat-form-field>

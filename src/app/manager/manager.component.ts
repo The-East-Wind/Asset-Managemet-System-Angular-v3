@@ -65,8 +65,8 @@ export class ManagerComponent implements OnInit {
         this.selectedAsset.clear();
         if (formData !== undefined) {
           console.log(formData);
-          newRequest.fromDate = this.dateFormatter(formData.fromDate);
-          newRequest.toDate = this.dateFormatter(formData.toDate);
+          newRequest.requestedFrom = this.dateFormatter(formData.requestedFrom);
+          newRequest.requestedTill = this.dateFormatter(formData.requestedTill);
           newRequest.requestedFor = formData.requestedFor;
           this._requestService.addNewRequest(newRequest).pipe(catchError((error: HttpErrorResponse) => {
             this._snackBar.open('Uh-oh! An Error occurred. Request could not be submitted.Please try again later', '', {

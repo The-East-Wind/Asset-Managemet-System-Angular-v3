@@ -9,15 +9,15 @@ import { Injectable } from '@angular/core';
 })
 export class EmployeeService {
   // user: Employee;
-  private serverUrl = 'http://localhost:8080/employees';
+  private serverUrl = 'http://localhost:4444/employee-service/employees';
   // tslint:disable-next-line: variable-name
   constructor(private _http: HttpClient) { }
-  fetchEmployeeWithUsername(username: string): Observable<Employee> {
+  /* fetchEmployeeWithUsername(username: string): Observable<Employee> {
     const url = `${this.serverUrl}/${username}`;
     return this._http.get<Employee>(url).pipe(retry(1), catchError(() => {
       return throwError('Error fetching employee details');
     }));
-  }
+  } */
   fetchEmployeeWithId(employeeId: number): Observable<Employee> {
     const url = `${this.serverUrl}/${employeeId}`;
     return this._http.get<Employee>(url).pipe(retry(1), catchError(() => {
